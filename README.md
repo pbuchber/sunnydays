@@ -1,7 +1,9 @@
 # Sunny Days
 
-##Was ist Sunny Days
-
+## Was ist Sunny Days
+ - Wetterdaten werden angezeigt
+ - Informationen zum Wetter verfügbar
+ - Verschiedene Lokationen des Wetters
 
 ## Teammitglieder
  - Andreas Dober
