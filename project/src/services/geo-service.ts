@@ -1,25 +1,16 @@
 export class GeoService {
     private static instance: GeoService;
 
-    private constructor() {
+   public getPosition(func: Function){
 
-    }
+      navigator.geolocation.getCurrentPosition((position) => {
 
-    public static getInstance(): GeoService{
-        if (!GeoService.instance) {
-            GeoService.instance = new GeoService();
-        }
+        func(position);
 
-        return GeoService.instance;
-    }
-
-    
-   public async getPosition() {
-    navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position)
-
-      return position;
-    });
+      });
   }
 
 }
+
+const geoService = new GeoService()
+export default geoService

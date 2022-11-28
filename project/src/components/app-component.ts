@@ -1,16 +1,18 @@
 import {html, render} from "lit-html"
-import  {GeoService} from "../services/geo-service"
+import  geoService, {GeoService} from "../services/geo-service"
 
 
 
 const template= html`
 <h1>Sunny Days</h2>
 <search-component></search-component>
+<weather-component></weather-component>
 `
 
 
 class AppComponent extends HTMLElement
 {
+
     constructor()
     {
         super()
@@ -19,19 +21,27 @@ class AppComponent extends HTMLElement
     connectedCallback()
     {
         console.log("app component connected")
+        geoService.getPosition(this.getLocation)
+
         this.render()
     }
 
-     private async render ()
+     private render ()
     {
         render(template, this.shadowRoot)
-
-        const service = GeoService.getInstance();
-
-        service.getPosition();
-
-        console.log('on app component')
+        
+        const searchComponent: HTMLElement = this.shadowRoot.querySelector("search-component")
+        const weatherComponent: HTMLElement = this.shadowRoot.querySelector("weather-component")
+        console.log('in render')
+        
     }
+
+    private getLocation(value: GeolocationPosition) {
+        console.log('Latitude: ' + value.coords.latitude)
+        console.log('Longitude: ' + value.coords.longitude)
+        console.log(value)
+    }
+
 }
 
 
