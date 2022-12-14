@@ -32,5 +32,6 @@
     temperature_2m: number[]
     relativehumidity_2m: number[]
     pressure_msl: number[]
+    weathercode: number[];
   }
   

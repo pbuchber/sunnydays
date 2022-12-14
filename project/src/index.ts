@@ -1,6 +1,7 @@
 import './components/app-component'
 import './components/weather-component'
 
+export const  DAY_SELECTED_EVENT = "user-selected" 
 
 const title = document.querySelector("title")
 title.textContent = "Sunny Days";

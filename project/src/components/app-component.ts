@@ -1,4 +1,5 @@
 import {html, render} from "lit-html"
+import { DAY_SELECTED_EVENT } from ".."
 import  geoService, {GeoService} from "../services/geo-service"
 
 
@@ -21,8 +22,6 @@ class AppComponent extends HTMLElement
     connectedCallback()
     {
         console.log("app component connected")
-        geoService.getPosition(this.getLocation)
-
         this.render()
     }
 
@@ -32,14 +31,13 @@ class AppComponent extends HTMLElement
         
         const searchComponent: HTMLElement = this.shadowRoot.querySelector("search-component")
         const weatherComponent: HTMLElement = this.shadowRoot.querySelector("weather-component")
+
+        weatherComponent.addEventListener(DAY_SELECTED_EVENT, (e: CustomEvent) => {
+            const day = e.detail.data
+            console.log("day selected:", day)
+        })
         console.log('in render')
         
-    }
-
-    private getLocation(value: GeolocationPosition) {
-        console.log('Latitude: ' + value.coords.latitude)
-        console.log('Longitude: ' + value.coords.longitude)
-        console.log(value)
     }
 
 }
