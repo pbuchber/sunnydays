@@ -1,14 +1,14 @@
+import { SingleEntryPlugin } from "webpack"
+
 export class GeoService {
-    private static instance: GeoService;
 
-   public getPosition(func: Function){
-
-      navigator.geolocation.getCurrentPosition((position) => {
-
-        func(position);
-
-      });
+  public async reverseGeocoding(lat: string, long: string)
+  {
+      const USER_URL = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${long}&localityLanguage=de`
+      const response = await fetch(USER_URL)
+      return await response.json()
   }
+
 
 }
 

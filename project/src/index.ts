@@ -1,7 +1,13 @@
 import './components/app-component'
 import './components/weather-component'
+import './components/detail-component'
+import './components/temperature-component.ts'
+import './components/pressure-component'
+import './components/humidity-component'
 
-export const  DAY_SELECTED_EVENT = "user-selected" 
+export const  DAY_SELECTED_EVENT = "day-selected" 
+export const  BACK_EVENT = "back-button-selected" 
+
 
 const title = document.querySelector("title")
 title.textContent = "Sunny Days";
