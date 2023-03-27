@@ -1,6 +1,4 @@
 import { html, render } from "lit-html"
-import weatherService from "../services/weather-service"
-import { WeatherData } from "../model/weatherData"
 import geoService from "../services/geo-service";
 
 
@@ -47,7 +45,6 @@ class DetailComponent extends HTMLElement {
 
         const res = this.getDayName(date.toISOString(), "de-DE") + ', ' + date.toLocaleDateString()
         render(template(res,location), this.shadowRoot!)
-
 
         const tempButton = this.shadowRoot.querySelector('#temp')
         const pressureButton = this.shadowRoot.querySelector('#pressure')
